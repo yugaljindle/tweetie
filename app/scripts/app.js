@@ -7,6 +7,10 @@ angular.module('twitterDashboardApp', [])
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/home', {
+        templateUrl: 'views/home.html',
+        controller: 'home'
+      })
       .otherwise({
         redirectTo: '/'
       });

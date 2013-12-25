@@ -1,7 +1,15 @@
+html {
+    height: 100%;
+}
+
 body {
     background: #ccc;
-    font-family: Arial, Helvetica, sans-serif;
     color: #333;
+    height: 100%;
+}
+
+.main-view {
+    height: 100%;
 }
 
 .hero-unit {
@@ -9,6 +17,7 @@ body {
     width: 350px;
     font-size: 18px;
     font-weight: 200;
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 30px;
     background-color: #eee;
     border-radius: 6px;
@@ -26,4 +35,23 @@ body {
 
 .showcase {
     border-radius: 4px;
+}
+
+.sidebar {
+    height: 100%;
+}
+
+.content {
+    height: 100%;
+}
+
+.sidebar-logo {
+    width: 25%;
+    height: 25%;
+}
+
+.sidebar-title {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px 10px;
 }
