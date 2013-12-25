@@ -2,5 +2,5 @@
 
 angular.module('twitterDashboardApp')
   .controller('home', function ($scope) {
-      // HERE
+    attachFollowHashTag();
   });

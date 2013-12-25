@@ -55,3 +55,8 @@ body {
     font-weight: bold;
     padding: 20px 10px;
 }
+
+.taglist li {
+    margin: 1px;
+    border: #CCC solid 1px;
+}
