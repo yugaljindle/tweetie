@@ -28,6 +28,9 @@ var AddHashtag = React.createClass({
   },
   onSubmit: function(e) {
     e.preventDefault();
+    if(!this.state.currTag) {
+        return;
+    }
     var updatedTags = this.state.tags.concat(['#' + this.state.currTag]);
     this.setState({tags: updatedTags, currTag: ''});
   },
