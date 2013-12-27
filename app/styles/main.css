@@ -60,3 +60,13 @@ body {
     margin: 1px;
     border: #CCC solid 1px;
 }
+
+.tweet-box {
+   display: inline;
+   float: left;
+   width: 300px;
+   height: 300px;
+   margin: 10px;
+   border-radius: 4px;
+   border: #000 solid 1px;
+}
