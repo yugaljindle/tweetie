@@ -4,6 +4,19 @@ A twitter dashboard for tracking multiple `#hashtags`
 # Technology showcase
 React.js & Angular.js
 
+# Test Run
+```
+# Install node modules
+npm install
+
+# Installing bower components
+bower install
+
+# Grunt server
+grunt server
+
+```
+
 ## Author
 | [![twitter/yugal1988](https://www.gravatar.com/avatar/19c28676f977300166c0f35f41a9aae0?s=90)](http://twitter.com/yugal1988 "Follow @yugal1988 on Twitter") |
 |---|
