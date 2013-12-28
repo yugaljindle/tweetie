@@ -68,15 +68,77 @@ function attachFollowHashTag() {
  *  Tweetie shoutbox
  */
 var TweetieShoutbox = React.createClass({
-  render: function() {
-    return (
-        <div className="tweet-box">
-            <div className="heading">
-                <span className="headingText">{this.props.tag}</span> 
+    getInitialState: function() {
+        return {tweets: []};
+    },
+    showTweet: function(tweet) {
+        return (
+            <div className="tweet span12">
+                <div className="tweet-image span2">
+                    <img src={tweet.image} />
+                </div>
+                <div className="tweet-content span10">
+                    <div className="tweet-name">
+                        {tweet.name}
+                        (<span className="tweet-screenName">
+                            <a target="_blank" href={"https://twitter.com/" + tweet.screen_name}>{'@'+tweet.screen_name}</a>
+                        </span>)
+                    </div>
+                    <div className="tweet-text">{tweet.text}</div>
+                </div>
             </div>
-        </div>
-    );
-  }
+        );
+    },
+    showAllTweets: function() {
+        if(this.state.tweets.length !== 0) {
+            return (this.state.tweets.map(this.showTweet));
+        } else {
+            return (<div className="tweet-waiting"></div>);
+        }
+    },
+    getTweets: function() {
+        $('.refreshing').show();
+        var self = this,
+            params = {
+                lang: 'en',
+                count: 10,
+                q: this.props.tag,
+                result_type: 'recent'
+            };
+        window.cb.__call("search_tweets", params, function(reply) {
+            var tweets = [],
+                statuses = reply.statuses;
+            for(i=0; i<statuses.length; i++) {
+                var tweet = {},
+                    status = reply.statuses[i];
+                    tweet['name'] = status.user.name;
+                    tweet['screen_name'] = status.user.screen_name;
+                    tweet['image'] = status.user.profile_image_url;
+                    tweet['text'] = status.text;
+                    tweets.push(tweet);
+            }
+            self.setState({tweets: tweets});
+            $('.refreshing').hide();
+        });
+    },
+    componentDidMount: function() {
+        this.getTweets();
+        this.interval = setInterval(this.getTweets, 2000);
+    },
+    render: function() {
+        return (
+            <div className="tweet-box">
+                <div className="heading">
+                    <span className="headingText pull-left">{this.props.tag}</span> 
+                    <span className="headingText pull-right refreshing">Refreshing..</span> 
+                    <span className="clearfix"></span> 
+                </div>
+                <div className="tweet-list">
+                    {this.showAllTweets()}
+                </div>
+            </div>
+        );
+    }
 });
 
 /*

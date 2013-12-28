@@ -8,6 +8,10 @@ body {
     height: 100%;
 }
 
+.clearfix {
+    clear: both;
+}
+
 .main-view {
     height: 100%;
 }
@@ -74,23 +78,50 @@ body {
     margin: 200px auto;
 }
 
+.tweet-waiting {
+    height: inherit;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url('../images/loading.gif');
+}
+
 .tweet-box {
    display: inline;
    float: left;
-   width: 300px;
+   width: 475px;
    height: 300px;
    margin: 10px;
-   border-radius: 10px;
    background-color: #fff;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
 }
 .tweet-box .heading {
     background-color: #3a87ad;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    padding: 5px 0;
+    padding: 5px 20px;
 }
 .tweet-box .heading .headingText {
-    padding-left: 20px;
     font-weight: bold;
     color: whitesmoke;
+}
+.tweet-box .tweet-list {
+    overflow: auto;
+    height: 270px;
+    border-left: solid #3a87ad 1px;
+    border-bottom: solid #3a87ad 1px;
+}
+.tweet-box .tweet-list .tweet {
+    margin: 0;
+    padding: 2px;
+    border-bottom: solid #3a87ad 1px;
+}
+.tweet-box .tweet-list .tweet .tweet-image img {
+    border: solid #000 1px;
+}
+.tweet-box .tweet-list .tweet .tweet-content .tweet-name {
+    font-weight: bold;
+}
+.tweet-box .tweet-list .tweet .tweet-content .tweet-name .tweet-screenName {
+    font-weight: normal;
 }
