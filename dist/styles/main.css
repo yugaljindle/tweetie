@@ -1,0 +1,127 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: #ccc;
+    color: #333;
+    height: 100%;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.main-view {
+    height: 100%;
+}
+
+.hero-unit {
+    margin: 30px auto 0 auto;
+    width: 350px;
+    font-size: 18px;
+    font-weight: 200;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 30px;
+    background-color: #eee;
+    border-radius: 6px;
+    padding: 25px;
+}
+
+.app-title {
+    width: 230px;
+}
+
+.center-unit {
+    display: block;
+    margin: 5px auto;
+}
+
+.showcase {
+    border-radius: 4px;
+}
+
+.sidebar {
+    height: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.page-content {
+    height: 100%;
+    background: #ccc;
+}
+
+.sidebar-logo {
+    width: 25%;
+    height: 25%;
+}
+
+.sidebar-title {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px 10px;
+}
+
+.taglist li {
+    margin: 5px 0;
+    border: #CCC solid 1px;
+    border-radius: 2px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.empty-banner {
+    width: 60%;
+    color: #7e7e7e;
+    font-size: 60px;
+    margin: 200px auto;
+}
+
+.tweet-waiting {
+    height: inherit;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url('../images/loading.gif');
+}
+
+.tweet-box {
+   display: inline;
+   float: left;
+   width: 475px;
+   height: 300px;
+   margin: 10px;
+   background-color: #fff;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+}
+.tweet-box .heading {
+    background-color: #3a87ad;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 5px 20px;
+}
+.tweet-box .heading .headingText {
+    font-weight: bold;
+    color: whitesmoke;
+}
+.tweet-box .tweet-list {
+    overflow: auto;
+    height: 270px;
+    border-left: solid #3a87ad 1px;
+    border-bottom: solid #3a87ad 1px;
+}
+.tweet-box .tweet-list .tweet {
+    margin: 0;
+    padding: 2px;
+    border-bottom: solid #3a87ad 1px;
+}
+.tweet-box .tweet-list .tweet .tweet-image img {
+    border: solid #000 1px;
+}
+.tweet-box .tweet-list .tweet .tweet-content .tweet-name {
+    font-weight: bold;
+}
+.tweet-box .tweet-list .tweet .tweet-content .tweet-name .tweet-screenName {
+    font-weight: normal;
+}
