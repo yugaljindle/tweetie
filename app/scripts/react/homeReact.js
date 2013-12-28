@@ -24,15 +24,20 @@ var AddHashtag = React.createClass({
     return {tags: [], currTag: ''};
   },
   onChange: function(e) {
-    this.setState({currTag: e.target.value});
+    var v = e.target.value.trim();
+    this.setState({currTag: v});
   },
   onSubmit: function(e) {
     e.preventDefault();
     if(!this.state.currTag) {
         return;
     }
-    var updatedTags = this.state.tags.concat(['#' + this.state.currTag]);
+    var tag = '#' + this.state.currTag;
+        updatedTags = this.state.tags.concat([tag]);
     this.setState({tags: updatedTags, currTag: ''});
+    // Set angular scope
+    window.scope.tags.push(tag);
+    window.scope.$apply();
   },
   render: function() {
     return (
