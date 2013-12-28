@@ -3,15 +3,15 @@
 /**
  * List of followed Hashtags
  * */
-var ListHashtags = React.createClass({displayName: 'ListHashtags',
+var ListHashtags = React.createClass({
   render: function() {
     var getList = function(tag) {
-      return React.DOM.li( {className:"text-info"}, tag);
+      return <li className="text-info">{tag}</li>;
     };
     return (
-        React.DOM.ul( {className:"nav nav-list taglist"}, 
-            this.props.tags.map(getList)
-        )
+        <ul className="nav nav-list taglist">
+            {this.props.tags.map(getList)}
+        </ul>
     );
   }
 });
@@ -19,7 +19,7 @@ var ListHashtags = React.createClass({displayName: 'ListHashtags',
 /**
  * Form to add hashtags
  * */
-var AddHashtag = React.createClass({displayName: 'AddHashtag',
+var AddHashtag = React.createClass({
     getInitialState: function() {
         return {tags: [], currTag: ''};
     },
@@ -44,56 +44,56 @@ var AddHashtag = React.createClass({displayName: 'AddHashtag',
     },
     render: function() {
         return (
-            React.DOM.div( {className:"follow-hashtag"}, 
-                React.DOM.form( {onSubmit:this.onSubmit}, 
-                    React.DOM.div( {className:"input-prepend input-append"}, 
-                        React.DOM.span( {className:"add-on"}, "#"),
-                        React.DOM.input( {className:"span9 addNewTag", type:"text", placeholder:"hashtag", onChange:this.onChange, value:this.state.currTag} ),
-                        React.DOM.button( {className:"btn"}, "Follow")
-                    )
-                ),
-                ListHashtags( {tags:this.state.tags} )
-            )
+            <div className="follow-hashtag">
+                <form onSubmit={this.onSubmit}>
+                    <div className="input-prepend input-append">
+                        <span className="add-on">#</span>
+                        <input className="span9 addNewTag" type="text" placeholder="hashtag" onChange={this.onChange} value={this.state.currTag} />
+                        <button className="btn">Follow</button>
+                    </div>
+                </form>
+                <ListHashtags tags={this.state.tags} />
+            </div>
         );
     }
 });
 
 // Function to attach <AddHashtag />
 function attachFollowHashTag() {
-    React.renderComponent(AddHashtag(null ), document.getElementById('followHashTag'));
+    React.renderComponent(<AddHashtag />, document.getElementById('followHashTag'));
 }
 
 
 /*
  *  Tweetie shoutbox
  */
-var TweetieShoutbox = React.createClass({displayName: 'TweetieShoutbox',
+var TweetieShoutbox = React.createClass({
     getInitialState: function() {
         return {tweets: []};
     },
     showTweet: function(tweet) {
         return (
-            React.DOM.div( {className:"tweet span12"}, 
-                React.DOM.div( {className:"tweet-image span2"}, 
-                    React.DOM.img( {src:tweet.image} )
-                ),
-                React.DOM.div( {className:"tweet-content span10"}, 
-                    React.DOM.div( {className:"tweet-name"}, 
-                        tweet.name,
-                        " (",React.DOM.span( {className:"tweet-screenName"}, 
-                            React.DOM.a( {target:"_blank", href:"https://twitter.com/" + tweet.screen_name}, '@'+tweet.screen_name)
-                        ),") "
-                    ),
-                    React.DOM.div( {className:"tweet-text"}, tweet.text)
-                )
-            )
+            <div className="tweet span12">
+                <div className="tweet-image span2">
+                    <img src={tweet.image} />
+                </div>
+                <div className="tweet-content span10">
+                    <div className="tweet-name">
+                        {tweet.name}
+                        (<span className="tweet-screenName">
+                            <a target="_blank" href={"https://twitter.com/" + tweet.screen_name}>{'@'+tweet.screen_name}</a>
+                        </span>)
+                    </div>
+                    <div className="tweet-text">{tweet.text}</div>
+                </div>
+            </div>
         );
     },
     showAllTweets: function() {
         if(this.state.tweets.length !== 0) {
             return (this.state.tweets.map(this.showTweet));
         } else {
-            return (React.DOM.div( {className:"tweet-waiting"}));
+            return (<div className="tweet-waiting"></div>);
         }
     },
     getTweets: function() {
@@ -127,16 +127,16 @@ var TweetieShoutbox = React.createClass({displayName: 'TweetieShoutbox',
     },
     render: function() {
         return (
-            React.DOM.div( {className:"tweet-box"}, 
-                React.DOM.div( {className:"heading"}, 
-                    React.DOM.span( {className:"headingText pull-left"}, this.props.tag), 
-                    React.DOM.span( {className:"headingText pull-right refreshing"}, "Refreshing.."), 
-                    React.DOM.span( {className:"clearfix"}) 
-                ),
-                React.DOM.div( {className:"tweet-list"}, 
-                    this.showAllTweets()
-                )
-            )
+            <div className="tweet-box">
+                <div className="heading">
+                    <span className="headingText pull-left">{this.props.tag}</span> 
+                    <span className="headingText pull-right refreshing">Refreshing..</span> 
+                    <span className="clearfix"></span> 
+                </div>
+                <div className="tweet-list">
+                    {this.showAllTweets()}
+                </div>
+            </div>
         );
     }
 });
@@ -144,7 +144,7 @@ var TweetieShoutbox = React.createClass({displayName: 'TweetieShoutbox',
 /*
  *  Tweetie shoutbox List
  */
-var TweetieShoutboxList = React.createClass({displayName: 'TweetieShoutboxList',
+var TweetieShoutboxList = React.createClass({
     getInitialState: function() {
         return { tags: [] };
     },
@@ -153,15 +153,15 @@ var TweetieShoutboxList = React.createClass({displayName: 'TweetieShoutboxList',
     },
     showList: function() {
         var createShoutBox = function(tag) {
-            return TweetieShoutbox( {tag:tag} );
+            return <TweetieShoutbox tag={tag} />;
         };
 
         if(this.state.tags.length !== 0) {
             return this.state.tags.map(createShoutBox);
         } else {
-            return (React.DOM.div( {className:"empty-banner"}, 
-                "Enter new #Hashtag !"
-            ));
+            return (<div className="empty-banner">
+                {"Enter new #Hashtag !"}
+            </div>);
         }
     },
     componentDidMount: function() {
@@ -170,14 +170,14 @@ var TweetieShoutboxList = React.createClass({displayName: 'TweetieShoutboxList',
     render: function() {
 
         return (
-            React.DOM.div( {className:"shout-list"}, 
-                this.showList()
-            )
+            <div className="shout-list">
+                {this.showList()}
+            </div>
         );
     }
 });
 
 // Function to add <TweetieShoutboxList />
 function addTweetieShoutboxList() {
-    React.renderComponent(TweetieShoutboxList(null ), document.getElementById('shout-here'));
+    React.renderComponent(<TweetieShoutboxList />, document.getElementById('shout-here'));
 }
