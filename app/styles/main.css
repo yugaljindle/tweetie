@@ -39,10 +39,13 @@ body {
 
 .sidebar {
     height: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
-.content {
+.page-content {
     height: 100%;
+    background: #ccc;
 }
 
 .sidebar-logo {
@@ -57,8 +60,18 @@ body {
 }
 
 .taglist li {
-    margin: 1px;
+    margin: 5px 0;
     border: #CCC solid 1px;
+    border-radius: 2px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.empty-banner {
+    width: 60%;
+    color: #7e7e7e;
+    font-size: 60px;
+    margin: 200px auto;
 }
 
 .tweet-box {
@@ -67,6 +80,17 @@ body {
    width: 300px;
    height: 300px;
    margin: 10px;
-   border-radius: 4px;
-   border: #000 solid 1px;
+   border-radius: 10px;
+   background-color: #fff;
+}
+.tweet-box .heading {
+    background-color: #3a87ad;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 5px 0;
+}
+.tweet-box .heading .headingText {
+    padding-left: 20px;
+    font-weight: bold;
+    color: whitesmoke;
 }
