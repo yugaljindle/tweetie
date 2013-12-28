@@ -55,6 +55,52 @@ var AddHashtag = React.createClass({
   }
 });
 
+// Function to attach <AddHashtag />
 function attachFollowHashTag() {
     React.renderComponent(<AddHashtag />, document.getElementById('followHashTag'));
+}
+
+
+/*
+ *  Tweetie shoutbox
+ */
+var TweetieShoutbox = React.createClass({
+  render: function() {
+    return (
+        <div className="tweet-box">
+            {this.props.tag}
+        </div>
+    );
+  }
+});
+
+/*
+ *  Tweetie shoutbox List
+ */
+var TweetieShoutboxList = React.createClass({
+    getInitialState: function() {
+        return { tags: [] };
+    },
+    updateTags: function() {
+        this.setState({tags: window.displayTags});
+    },
+    componentDidMount: function() {
+        this.interval = setInterval(this.updateTags, 500);
+    },
+    render: function() {
+        var createShoutBox = function(tag) {
+            return <TweetieShoutbox tag={tag} />;
+        };
+        
+        return (
+            <div className="shout-list">
+                {this.state.tags.map(createShoutBox)}
+            </div>
+        );
+    }
+});
+
+// Function to add <TweetieShoutboxList />
+function addTweetieShoutboxList() {
+    React.renderComponent(<TweetieShoutboxList />, document.getElementById('shouthere'));
 }
